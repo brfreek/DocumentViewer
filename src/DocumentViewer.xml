@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="timeseries.documentviewer.DocumentViewer" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+        supportedPlatform="Web"
+        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>Document Viewer</name>
+    <description>Document Viewer for offline purposes</description>
+    <icon/>
+    <properties>
+        <propertyGroup caption="General">
+            <property key="fileId" type="attribute" required="false">
+                <caption>FileID of document</caption>
+                <description>The FileID of the document (only PDF!)</description>
+                <attributeTypes>
+                    <attributeType name="Long"/>
+                </attributeTypes>
+            </property>
+            <property key="enableZoom" type="boolean" required="true" defaultValue="true">
+                <caption>Enable Zoom</caption>
+                <description>Enable zoom and zoom touch gestures</description>
+            </property>
+            <property key="base64File" type="attribute" required="false">
+                <caption>Base64 of document</caption>
+                <description>Base64 encoded document (only PDF!)</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                </attributeTypes>
+            </property>
+            <property key="fileChangedDate" type="attribute" required="false">
+                <caption>Changed Date</caption>
+                <description />
+                <attributeTypes>
+                    <attributeType name="DateTime"/>
+                </attributeTypes>
+            </property>
+            <property key="buttonClass" type="string" required="false">
+                <caption>Button classes</caption>
+                <description />
+            </property>
+            <property key="prevLabel" type="textTemplate" required="true">
+                <caption>Previous page button label</caption>
+                <description />
+                <translations>
+                    <translation lang="nl_NL">Vorige pagina</translation>
+                    <translation lang="en_US">Previous page</translation>
+                </translations>
+            </property>
+            <property key="nextLabel" type="textTemplate" required="true">
+                <caption>Next page button label</caption>
+                <description />
+                <translations>
+                    <translation lang="nl_NL">Volgende pagina</translation>
+                    <translation lang="en_US">Next page</translation>
+                </translations>
+            </property>
+            <property key="pageNumberString" type="textTemplate" required="true">
+                <caption>Page number string</caption>
+                <description>Page number template, always use %pageNumber% and %totalPages% as placeholders</description>
+                <translations>
+                    <translation lang="nl_NL">Pagina %pageNumber% van %totalPages% paginas</translation>
+                    <translation lang="en_US">Page %pageNumber% of %totalPages% pages</translation>
+                </translations>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Sizing">
+            <property key="pageWidth" type="integer" required="true" defaultValue="0">
+                <caption>Width of document</caption>
+                <description>[OPTIONAL] Fixed width of page, keep 0 for dynamic or full width</description>
+            </property>
+            <property key="pageWidthClassName" type="string" required="false" defaultValue="">
+                <caption>Class name</caption>
+                <description>[OPTIONAL] Class name of element to match width with</description>
+            </property>
+        </propertyGroup>
+    </properties>
+</widget>
