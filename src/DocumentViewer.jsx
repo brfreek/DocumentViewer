@@ -87,35 +87,51 @@ class DocumentViewer extends Component {
         }
     };
 
-    _renderDocumentCore = (currentPageNumber) => {
-        if(this.props.enableZoom){
+    _renderDocumentCore = currentPageNumber => {
+        if (this.props.enableZoom) {
             return (
                 <TransformWrapper defaultScale={1}>
                     <TransformComponent>
-                        <DocumentCore pageNumber={currentPageNumber} documentLoadSuccess={this._onDocumentLoadSuccess} fileUrl={this._getFileUrl()} width={this._getPageWidth} />
+                        <DocumentCore
+                            pageNumber={currentPageNumber}
+                            documentLoadSuccess={this._onDocumentLoadSuccess}
+                            fileUrl={this._getFileUrl()}
+                            width={this._getPageWidth}
+                        />
                     </TransformComponent>
                 </TransformWrapper>
-            )
+            );
         } else {
-            return <DocumentCore pageNumber={currentPageNumber} documentLoadSuccess={this._onDocumentLoadSuccess} fileUrl={this._getFileUrl()} width={this._getPageWidth} />
+            return (
+                <DocumentCore
+                    pageNumber={currentPageNumber}
+                    documentLoadSuccess={this._onDocumentLoadSuccess}
+                    fileUrl={this._getFileUrl()}
+                    width={this._getPageWidth}
+                />
+            );
         }
-    }
+    };
     _replacePageCounter = () => {
-        if(this.props.pageNumberString.status === "available") {
+        if (this.props.pageNumberString.status === "available") {
             const res1 = this.props.pageNumberString.value.replace("%pageNumber%", this.state.currentPageNumber);
-            return res1.replace("%totalPages%", this.state.numberOfPages);    
+            return res1.replace("%totalPages%", this.state.numberOfPages);
         } else {
             return "";
         }
-    }
+    };
     render() {
         const { numberOfPages, currentPageNumber } = this.state;
-        if(this.props.nextLabel.status !== "available" && this.props.prevLabel.status !== "available" && this.props.pageNumberString.status !== "available"){
-            return (<div></div>);
+        if (
+            this.props.nextLabel.status !== "available" &&
+            this.props.prevLabel.status !== "available" &&
+            this.props.pageNumberString.status !== "available"
+        ) {
+            return <div></div>;
         }
         return (
             <div>
-                { this._renderDocumentCore(currentPageNumber) }
+                {this._renderDocumentCore(currentPageNumber)}
                 <div
                     style={{
                         display: "flex",
